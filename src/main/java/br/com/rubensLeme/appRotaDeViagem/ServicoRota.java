@@ -1,4 +1,4 @@
-package appRotaDeViagem;
+package br.com.rubensLeme.appRotaDeViagem;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

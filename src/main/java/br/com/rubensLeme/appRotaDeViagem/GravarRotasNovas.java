@@ -1,16 +1,16 @@
-package appRotaDeViagem;
+package br.com.rubensLeme.appRotaDeViagem;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class GravarRotas {
+public class GravarRotasNovas {
 
-	public static void main(String[] args) {
-		atribuirBarrasAoArquivo();
-	
-	escrever(atribuirBarrasAoArquivo()+"input-file.csv", "DDD-RRR3");
-
-	}
+//	public static void main(String[] args) {
+//		atribuirBarrasAoArquivo();
+//	
+//	escrever(atribuirBarrasAoArquivo()+"input-file.csv", "DDD-RRR3");
+//
+//	}
 
 	public static void escrever(String path, String texto) {
 		try {
@@ -31,7 +31,6 @@ public class GravarRotas {
 	public static String atribuirBarrasAoArquivo() {
 		String linha = obterDiretorioAplicacao();
 		linha = linha.replace("\\", "\\\\");
-		System.out.println( linha );
 		return linha + "\\";
 	}
 }
