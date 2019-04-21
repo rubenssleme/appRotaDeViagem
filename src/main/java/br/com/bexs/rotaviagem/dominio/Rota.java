@@ -25,11 +25,54 @@ public class Rota {
 	}
 
 	
+	public Rota(String obterInformacaoRota) {
+		this();
+		atribuirInformacaoRota(informacaoRota);
+		init();
+	}
+
+
+	private void init() {
+		if (informacaoRota != null && !informacaoRota.isEmpty()) {
+			String[] informacaoRotaSplitted = null;
+
+			if (informacaoRota.contains(LIMITE_USANDO_VIRGULA)) {
+				informacaoRotaSplitted = informacaoRota.split(LIMITE_USANDO_VIRGULA);
+			} else if (informacaoRota.contains(LIMITE_USANDO_YFEN)) {
+				informacaoRotaSplitted = informacaoRota.split(LIMITE_USANDO_YFEN);
+			} else {
+				validado = false;
+				erros.add("A melhor rota não foi encontrada. Dado entrada: " + informacaoRota
+						+ " é inválido. Adicione uma entrada válida, por exemplo: GRU-CDG or GRU-BRC-CDG");
+			}
+
+			if (informacaoRotaSplitted != null) {
+				for (String infoRoute : informacaoRotaSplitted) {
+					infoRoute = infoRoute.replaceAll("\\s+", "");
+
+					if (infoRoute.matches("[a-zA-Z]+") && infoRoute.length() == 3) {
+						locais.add(infoRoute);
+					} else {
+						try {
+							valor = Double.parseDouble(infoRoute);
+						} catch (Exception e) {
+							valor = null;
+						}
+					}
+				}
+				atualizarRotaComPrecoCorrigido();
+			}
+		}
+
+		
+	}
+
+
 	private void atualizarRotaComPrecoCorrigido() {
-		this.informacaoRota = toCompleteInfo().replaceAll("\n", "");
+		this.informacaoRota = completarInformacoes().replaceAll("\n", "");
 	}
 	
-	public String toCompleteInfo() {
+	public String completarInformacoes() {
 		return "\n" + locais.stream().map(String::toString).collect(Collectors.joining(","))+","+ valor;
 	}
 	
