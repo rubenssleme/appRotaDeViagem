@@ -14,11 +14,11 @@ import br.com.bexs.rotaviagem.repositorio.RepositorioRota;
 
 
 @Component
-public class ServicoRotaRestImpl {
+public class ServicoRotaRestImpl implements ServicoRota {
 	@Autowired
 	private RepositorioRota repositorioRota;
 
-	
+	@Override
 	public ResultadoEdicaoRotaDTO inserir(RotaDTO rotaDTO) {
 		ResultadoEdicaoRotaDTO resultaEdicaoRota = new ResultadoEdicaoRotaDTO();
 
@@ -38,7 +38,8 @@ public class ServicoRotaRestImpl {
 
 		return resultaEdicaoRota;
 	}
-
+	
+	@Override
 	public ResultadoBuscaRotaDTO fetchBestRoute(RotaDTO rotaDTO) {
 		ResultadoBuscaRotaDTO resultadoBuscaRota = new ResultadoBuscaRotaDTO();
 

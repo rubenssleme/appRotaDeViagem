@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import br.com.bexs.rotaviagem.utilitarios.Registro;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+"br.com.bexs", "br.com.bexs.rotaviagem"})
 public class Aplicacao implements CommandLineRunner {
 
 	@Autowired

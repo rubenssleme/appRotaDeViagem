@@ -5,8 +5,6 @@ import java.util.List;
 
 import br.com.bexs.rotaviagem.dominio.Rota;
 
-
-
 public class ResultadoBuscaRotaDTO {
 	private boolean successo;
 	private List<String> erros;
@@ -29,7 +27,7 @@ public class ResultadoBuscaRotaDTO {
 		return erros;
 	}
 
-	public void setErrors(List<String> errors) {
+	public void setErrors(List<String> erros) {
 		successo = false;
 		this.erros = erros;
 	}
